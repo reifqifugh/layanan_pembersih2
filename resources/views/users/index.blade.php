@@ -20,7 +20,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">role</th>
+                                    <th scope="col">password</th>
                                     <th scope="col">Created At</th>                   
                                     <th scope="col">Actions</th>
                                 </tr>
@@ -31,15 +31,17 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ $user->role_id }}</td>
+                                        <td>{{ $user->password }}</td>
+                                        
                                         <td>{{ $user->created_at }}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <button class="btn btn-info btn-sm">Show</button>
                                             <button class="btn btn-warning btn-sm">Update</button>
                                             <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach
+                                
                             </tbody>
                         </table>
 
@@ -51,4 +53,27 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    //message with sweetalert
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'BERHASIL',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 2000
+        });
+    @elseif(session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'GAGAL!',
+            text: '{{ session('error') }}',
+            showConfirmButton: false,
+            timer: 2000
+        });
+    @endif
+</script>
 @endsection
