@@ -51,11 +51,11 @@ class UserController extends Controller
 
 
     
-    // public function show($id)
-    // {
-    //     $user = User::with('role')->findOrFail($id);
-    //     return view('users.show', compact('user'));
-    // }
+    public function show($id)
+    {
+        $user = User::with('role')->findOrFail($id);
+        return view('users.show', compact('user'));
+    }
 
     // public function edit($id)
     // {
